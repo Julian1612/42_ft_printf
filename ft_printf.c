@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:56:49 by jschneid          #+#    #+#             */
-/*   Updated: 2022/05/26 13:27:06 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/05/26 19:10:42 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@
 //////////////////////////////////////
 
 int		ft_printf(const char *input_str, ...);
-void	write_string(const char *input_str, va_list arguments);
-void	put_char(const char output_char);
-void	conversion_check(const char *input_str, int index, va_list arguments);
-void	output_c(va_list arguments);
-
-//ft_printf main function
+int		write_string(const char *input_str, va_list arguments);
+void	print_char(const char output_char);
+int		conversion_check(const char *input_str, int index, va_list arguments);
+int		output_character(va_list arguments);
+int		output_string(va_list arguments);
+int		output_decimal(va_list arguments);
+int		output_intiger(va_list arguments);
+int		output_percent();
+// 'ft_printf' main function
 int	ft_printf(const char *input_str, ...)
 {
 	int printed_chars;
@@ -29,94 +32,131 @@ int	ft_printf(const char *input_str, ...)
 	printed_chars = 0;
 	va_list arguments;
 	va_start(arguments, input_str);
-	/* printed_chars = */ write_string(input_str, arguments);
-
+	printed_chars = write_string(input_str, arguments);
 	va_end(arguments);
 	return (printed_chars);
 }
 
-//iterrats through the given string and prints the single charcters
-//when a '%' character occurs the function stars function 'conversion_check'
-void write_string(const char *input_str, va_list arguments)
+// Iterrats through the given string and prints the single charcters.
+// When a '%' character occurs the function starts function 'conversion_check'
+int write_string(const char *input_str, va_list arguments)
 {
 	int index;
+	int char_counter;
 
 	index = 0;
+	char_counter = 0;
 	while (input_str[index] != '\0')
 	{
 		if (input_str[index] == '%')
 		{
-			conversion_check(input_str, index, arguments);
+			char_counter += conversion_check(input_str, index, arguments);
 			index++;
 		}
 		else
-			put_char(input_str[index]);
+			print_char(input_str[index]);
+		if (input_str[index] != '%' && input_str[index - 1] != '%')
+			char_counter++;
 		index++;
 	}
+	return (char_counter);
 }
 
-//writes the given string to the output
-void put_char(const char output_char)
+// Writes the given string to the output
+void print_char(const char output_char)
 {
 	write(1, &output_char, 1);
 }
 
 // Checks wich character is used after the %
 // and returns the a value between 0 and 9
-void conversion_check(const char *input_str, int index, va_list arguments)
+int conversion_check(const char *input_str, int index, va_list arguments)
 {
 	if (input_str[index + 1] == 'c')
-		output_c(arguments);
+		return (output_character(arguments));
 	else if (input_str[index + 1] == 's')
-		output_s(arguments);
-/* 	else if (input_str[index + 1] == 'p')
-		return (3);
+		return (output_string(arguments));
+/*  else if (input_str[index + 1] == 'p')
+		output_d(arguments); */
 	else if (input_str[index + 1] == 'd')
-		return (4);
+		return (output_decimal(arguments));
 	else if (input_str[index + 1] == 'i')
-		return (5);
-	else if (input_str[index + 1] == 'u')
+		return (output_decimal(arguments));
+/*	else if (input_str[index + 1] == 'u')
 		return (6);
 	else if (input_str[index + 1] == 'x')
 		return (7);
 	else if (input_str[index + 1] == 'X')
-		return (8);
+		return (8); */
 	else if (input_str[index + 1] == '%')
-		return (1);
+		return (output_percent());
+
 	else
-		return (0); */
+		return (0);
 }
 
-//Gets the vaulue from the argument and starts function 'put_char'
-void output_c(va_list arguments)
+// Gets the value from the argument and starts function 'put_char'
+int output_character(va_list arguments)
 {
-	int c;
+	int character;
 
-	c = va_arg(arguments, int);
-	put_char(c);
+	character = va_arg(arguments, int);
+	print_char(character);
+	return (1);
 }
 
-void output_s(va_list arguments)
+// Gets the value from the argument and itarrets through the string and prints
+// every character with help of print_char
+int output_string(va_list arguments)
 {
 	int index;
+	char *string;
 
 	index = 0;
-	while (arguments[index] != '\0')
+	string =  va_arg(arguments, char *);
+	while (string[index] != '\0')
 	{
-
+		print_char(string[index]);
 		index++;
 	}
+	return (index);
+}
+
+// Gets the value from the argument and coverts the intigr number to a string,
+// then the function itarretes through the string and prints the characters with print_cahr
+int output_numbers(va_list arguments)
+{
+	int		index;
+	int		decimal_number;
+	char	*string_number;
+
+	index = 0;
+	decimal_number = va_arg(arguments, int);
+	string_number = ft_itoa(decimal_number);
+	while (string_number[index] != '\0')
+	{
+		print_char(string_number[index]);
+		index++;
+	}
+	return (index);
+}
+
+int output_percent()
+{
+	print_char('%');
+	return (2);
 }
 
 int main ()
 {
 	printf("////////////////Original////////////////\n");
 	printf("output: ");
-	int y = printf("hall%c", 'o');
+	int y = printf("hallo %s %i %% %% %% %% %% %d", "julian", 565, 711);
 	printf("\nchars: %i", y);
 	printf("\n///////////////////My///////////////////\n");
 	printf("output: ");
 	fflush(stdout);
-	int x = ft_printf("hall%c", 'o');
+	int x = ft_printf("hallo %s %i %% %% %% %% %% %d", "julian", 565, 711);
+	printf("\nchars: %i", x);
 	return (0);
 }
