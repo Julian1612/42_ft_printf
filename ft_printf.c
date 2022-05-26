@@ -5,71 +5,71 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/25 10:20:33 by jschneid          #+#    #+#             */
-/*   Updated: 2022/05/25 16:27:45 by jschneid         ###   ########.fr       */
+/*   Created: 2022/05/26 10:56:49 by jschneid          #+#    #+#             */
+/*   Updated: 2022/05/26 13:27:06 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-/////////Delet after finish///////////
+///////////Delet after finish/////////
 #include <stdio.h>
 //////////////////////////////////////
 
 int		ft_printf(const char *input_str, ...);
-int		count_output_len(const char *input_str);
-int		conversion_check();
-int		count_passed_args(const char *input_str);
-char	creat_output_string(char str_output);
+void	write_string(const char *input_str, va_list arguments);
+void	put_char(const char output_char);
+void	conversion_check(const char *input_str, int index, va_list arguments);
+void	output_c(va_list arguments);
 
-//the actual function ft_printf
-int ft_printf(const char *input_str, ...)
+//ft_printf main function
+int	ft_printf(const char *input_str, ...)
 {
-	int str_len;
-	char str_output;
+	int printed_chars;
 
+	printed_chars = 0;
 	va_list arguments;
 	va_start(arguments, input_str);
-	str_len =  count_output_len(input_str);
-	str_output = malloc((sizeof(char) + 1) * str_len);
-	if (str_output == NULL)
-		return (NULL);
-	str_output = creat_output_string(input_str);
-	//write_string();
+	/* printed_chars = */ write_string(input_str, arguments);
+
 	va_end(arguments);
-	return (str_len);
+	return (printed_chars);
 }
 
-// Gets the the complete length of the string wich will be the output
-// including the length of the variables
-int count_output_len(const char *input_str)
+//iterrats through the given string and prints the single charcters
+//when a '%' character occurs the function stars function 'conversion_check'
+void write_string(const char *input_str, va_list arguments)
 {
 	int index;
-	int char_counter;
 
 	index = 0;
-	char_counter = 0;
 	while (input_str[index] != '\0')
 	{
-		if (input_str[index] == '%' && (input_str[index + 1] == 'c' || input_str[index + 1] == 's'
-		|| input_str[index + 1] == 'p' || input_str[index + 1] == 'd' || input_str[index + 1] == 'i'
-		|| input_str[index + 1] == 'u' || input_str[index + 1] == 'x' || input_str[index + 1] == 'X'
-		|| input_str[index + 1] == '%'))
-			char_counter += conversion_check(input_str, index);
+		if (input_str[index] == '%')
+		{
+			conversion_check(input_str, index, arguments);
+			index++;
+		}
+		else
+			put_char(input_str[index]);
 		index++;
 	}
-	char_counter += (index - (2 * count_passed_args(input_str)));
-	return (char_counter);
+}
+
+//writes the given string to the output
+void put_char(const char output_char)
+{
+	write(1, &output_char, 1);
 }
 
 // Checks wich character is used after the %
 // and returns the a value between 0 and 9
-int conversion_check(const char *input_str, int index)
+void conversion_check(const char *input_str, int index, va_list arguments)
 {
 	if (input_str[index + 1] == 'c')
-		return (1);
+		output_c(arguments);
 	else if (input_str[index + 1] == 's')
-		return (2);
-	else if (input_str[index + 1] == 'p')
+		output_s(arguments);
+/* 	else if (input_str[index + 1] == 'p')
 		return (3);
 	else if (input_str[index + 1] == 'd')
 		return (4);
@@ -82,42 +82,41 @@ int conversion_check(const char *input_str, int index)
 	else if (input_str[index + 1] == 'X')
 		return (8);
 	else if (input_str[index + 1] == '%')
-		return (9);
+		return (1);
 	else
-		return (0);
+		return (0); */
 }
 
-int count_passed_args(const char *input_str)
+//Gets the vaulue from the argument and starts function 'put_char'
+void output_c(va_list arguments)
 {
-	int i;
-	int counter;
+	int c;
 
-	i = 0;
-	counter = 0;
-	while (input_str[i] != '\0')
+	c = va_arg(arguments, int);
+	put_char(c);
+}
+
+void output_s(va_list arguments)
+{
+	int index;
+
+	index = 0;
+	while (arguments[index] != '\0')
 	{
-		if (input_str[i] == '%')
-			counter++;
-		i++;
+
+		index++;
 	}
-	return (counter);
-}
-
-//creats the string for the output and coverts the conversions to the actual value
-char creat_output_string(char str_output)
-{
-
 }
 
 int main ()
 {
 	printf("////////////////Original////////////////\n");
 	printf("output: ");
-	int y = printf("hall%c", 'c');
+	int y = printf("hall%c", 'o');
 	printf("\nchars: %i", y);
-	printf("\n//////////////////My/////////////////\n");
+	printf("\n///////////////////My///////////////////\n");
 	printf("output: ");
-	int x = ft_printf("hall%c");
-	printf("\nchars: %i\n", x);
+	fflush(stdout);
+	int x = ft_printf("hall%c", 'o');
 	return (0);
 }
