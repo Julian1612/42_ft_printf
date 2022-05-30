@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils_02.c                               :+:      :+:    :+:   */
+/*   ft_printf_%x.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/30 11:01:49 by jschneid          #+#    #+#             */
-/*   Updated: 2022/05/30 14:18:44 by jschneid         ###   ########.fr       */
+/*   Created: 2022/05/30 16:10:38 by jschneid          #+#    #+#             */
+/*   Updated: 2022/05/30 16:19:19 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,26 +78,4 @@ void	print_uppercase_hexa(unsigned long long decimal_nbr)
 	else if (new_value == 63)
 		new_value = 'F';
 	print_char(new_value);
-}
-
-int	output_unsigned_int(va_list arguments)
-{
-	int		index;
-	int		decimal_number;
-	char	*string_number;
-
-	index = 0;
-	decimal_number = va_arg(arguments, int);
-	if (decimal_number < 0)
-	{
-		write(1, "4294967295", 10);
-		return (10);
-	}
-	string_number = ft_itoa(decimal_number);
-	while (string_number[index] != '\0')
-	{
-		print_char(string_number[index]);
-		index++;
-	}
-	return (index);
 }

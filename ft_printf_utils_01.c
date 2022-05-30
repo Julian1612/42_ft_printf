@@ -1,90 +1,69 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils_01.c                               :+:      :+:    :+:   */
+/*   ft_printf_utils_03.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/30 11:00:44 by jschneid          #+#    #+#             */
-/*   Updated: 2022/05/30 14:18:26 by jschneid         ###   ########.fr       */
+/*   Created: 2022/05/30 11:14:06 by jschneid          #+#    #+#             */
+/*   Updated: 2022/05/30 11:21:38 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// Gets the value from the argument and coverts the intigr number to a string,
-// then the function itarretes through the string
-// and prints the characters with print_cahr
-int	output_numbers(va_list arguments)
+char	*ft_itoa(int n)
 {
-	int		index;
-	int		decimal_number;
-	char	*string_number;
+	long	len_numb;
+	char	*str;
+	char	*newstr;
 
-	index = 0;
-	decimal_number = va_arg(arguments, int);
-	string_number = ft_itoa(decimal_number);
-	while (string_number[index] != '\0')
+	len_numb = numblen(n);
+	str = malloc((len_numb + 1) * sizeof(char));
+	if (str == NULL)
+		return (NULL);
+	newstr = getstr(n, str, len_numb);
+	return (newstr);
+}
+
+static long	numblen(int numb)
+{
+	int	i;
+
+	i = 0;
+	if (numb == 0 || numb < 0)
+		i++;
+	while (numb != 0)
 	{
-		print_char(string_number[index]);
-		index++;
+		numb /= 10;
+		i++;
 	}
-	return (index);
+	return (i);
 }
 
-// Gives the 'print_char' function a '%' prints it and returns 2
-int	output_percent(void)
+static char	*getstr(long numb, char *str, long len_numb)
 {
-	print_char('%');
-	return (2);
-}
+	long	newnum;
+	int		sign;
 
-// Gets the pointer adress and prints it with the 'decimal_to_hexadecimal'
-int	output_ptr_adr(va_list arguments)
-{
-	int					length_address;
-	unsigned long long	ptr;
-
-	ptr = (unsigned long long) va_arg(arguments, void *);
-	length_address = get_number_length(ptr);
-	write(1, "0x", 2);
-	print_ptr_address(ptr);
-	return (length_address);
-}
-
-int	get_number_length(long long ptr_address)
-{
-	int	length;
-
-	length = 0;
-	while (ptr_address > 0)
+	newnum = 0;
+	sign = 0;
+	str[len_numb] = '\0';
+	if (numb == 0)
+		str[0] = '0';
+	if (numb < 0)
 	{
-		ptr_address /= 10;
-		if (ptr_address > 0)
-			length ++;
+		numb *= -1;
+		sign = 1;
 	}
-	return (length);
-}
-
-void	print_ptr_address(unsigned long long decimal_nbr)
-{
-	long long	new_value;
-
-	new_value = decimal_nbr % 16 + 48;
-	decimal_nbr /= 16;
-	if (decimal_nbr > 0)
-		print_ptr_address(decimal_nbr);
-	if (new_value == 58)
-		new_value = 'a';
-	else if (new_value == 59)
-		new_value = 'b';
-	else if (new_value == 60)
-		new_value = 'c';
-	else if (new_value == 61)
-		new_value = 'd';
-	else if (new_value == 62)
-		new_value = 'e';
-	else if (new_value == 63)
-		new_value = 'f';
-	print_char(new_value);
+	while (len_numb > 0)
+	{
+		newnum = numb % 10;
+		str[len_numb -1] = 48 + newnum;
+		numb /= 10;
+		len_numb--;
+	}
+	if (sign == 1)
+		str[0] = '-';
+	return (str);
 }

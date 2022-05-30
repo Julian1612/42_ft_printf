@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 11:35:17 by jschneid          #+#    #+#             */
-/*   Updated: 2022/05/30 14:18:07 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/05/30 16:23:54 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,6 @@ int	write_string(const char *input_str, va_list arguments)
 	return (char_counter);
 }
 
-// Writes the given string to the output
-void	print_char(const char output_char)
-{
-	write(1, &output_char, 1);
-}
-
 // Checks wich character is used after the %
 // and returns the a value between 0 and 9
 int	conversion_check(const char *input_str, int index, va_list arguments)
@@ -68,29 +62,21 @@ int	conversion_check(const char *input_str, int index, va_list arguments)
 	return (0);
 }
 
-// Gets the value from the argument and starts function 'put_char'
-int	output_character(va_list arguments)
+int	get_number_length(long long ptr_address)
 {
-	int	character;
+	int	length;
 
-	character = va_arg(arguments, int);
-	print_char(character);
-	return (1);
+	length = 0;
+	while (ptr_address > 0)
+	{
+		ptr_address /= 10;
+		if (ptr_address > 0)
+			length ++;
+	}
+	return (length);
 }
 
-// Gets the value from the argument and itarrets through the string and prints
-// every character with help of print_char
-int	output_string(va_list arguments)
+void	print_char(const char output_char)
 {
-	int		index;
-	char	*string;
-
-	index = 0;
-	string = va_arg(arguments, char *);
-	while (string[index] != '\0')
-	{
-		print_char(string[index]);
-		index++;
-	}
-	return (index);
+	write(1, &output_char, 1);
 }
