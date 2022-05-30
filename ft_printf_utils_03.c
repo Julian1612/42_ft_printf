@@ -1,20 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_printf_utils_03.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/09 08:03:29 by jschneid          #+#    #+#             */
-/*   Updated: 2022/05/26 15:14:33 by jschneid         ###   ########.fr       */
+/*   Created: 2022/05/30 11:14:06 by jschneid          #+#    #+#             */
+/*   Updated: 2022/05/30 11:21:38 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-char		*ft_itoa(int n);
-static long	numblen(int numb);
-static char	*getstr(long numb, char *str, long numb_len);
 
 char	*ft_itoa(int n)
 {
