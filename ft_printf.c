@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:56:49 by jschneid          #+#    #+#             */
-/*   Updated: 2022/05/30 10:13:01 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/05/30 10:29:32 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int		output_lowercase_hexa(va_list argument);
 void	print_lowercase_hexa(unsigned long long decimal_nbr);
 int		output_uppercase_hexa(va_list arguments);
 void	print_uppercase_hexa(unsigned long long decimal_nbr);
+int		output_unsigned_int(va_list arguments);
 
 // 'ft_printf' main function
 int	ft_printf(const char *input_str, ...)
@@ -90,8 +91,8 @@ int	conversion_check(const char *input_str, int index, va_list arguments)
 		return (output_numbers(arguments));
 	else if (input_str[index + 1] == 'i')
 		return (output_numbers(arguments));
-/*	else if (input_str[index + 1] == 'u')
-		return (6);*/
+	else if (input_str[index + 1] == 'u')
+		return (output_unsigned_int(arguments));
 	else if (input_str[index + 1] == 'x')
 		return (output_lowercase_hexa(arguments));
 	else if (input_str[index + 1] == 'X')
@@ -275,6 +276,28 @@ void	print_uppercase_hexa(unsigned long long decimal_nbr)
 	print_char(new_value);
 }
 
+int output_unsigned_int(va_list arguments)
+{
+	int		index;
+	int		decimal_number;
+	char	*string_number;
+
+	index = 0;
+	decimal_number = va_arg(arguments, int);
+	if (decimal_number < 0)
+	{
+		write(1, "4294967295", 10);
+		return (10);
+	}
+	string_number = ft_itoa(decimal_number);
+	while (string_number[index] != '\0')
+	{
+		print_char(string_number[index]);
+		index++;
+	}
+	return (index);
+}
+
 int	main ()
 {
 	int	*ptr;
@@ -283,12 +306,12 @@ int	main ()
 
 	printf("////////////////Original////////////////\n");
 	printf("output: ");
-	y = printf("%X %x", 1299993, 4444444);
+	y = printf("%u %u", +1, -1);
 	printf("\nchars: %i", y);
 	printf("\n///////////////////My///////////////////\n");
 	printf("output: ");
 	fflush(stdout);
-	x = ft_printf("%X %x", 1299993, 4444444);
+	x = ft_printf("%u %u", +1, -1);
 	printf("\nchars: %i", x);
 	return (0);
 }
