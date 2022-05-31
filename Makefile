@@ -6,7 +6,7 @@
 #    By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 11:34:15 by jschneid          #+#    #+#              #
-#    Updated: 2022/05/24 13:55:48 by jschneid         ###   ########.fr        #
+#    Updated: 2022/05/31 11:19:06 by jschneid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME = ft_printf.a
 
 FLAGS = -Wall -Wextra -Werror
 
-MANDATORY = ft_printf.c
+MANDATORY = ft_printf.c ft_printf_percent.c ft_printf_c.c ft_printf_p.c \
+ft_printf_s.c ft_printf_x.c ft_printf_numbers.c ft_printf_utils_00.c \
+ft_printf_utils_01.c
 
 OBJ = $(MANDATORY:.c=.o)
 

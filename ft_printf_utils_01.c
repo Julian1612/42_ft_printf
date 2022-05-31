@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils_03.c                               :+:      :+:    :+:   */
+/*   ft_printf_utils_01.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 11:14:06 by jschneid          #+#    #+#             */
-/*   Updated: 2022/05/30 11:21:38 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/05/31 10:32:56 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_itoa(int n)
+// Converts the given intiger number to a string
+char	*ft_itoa(long n)
 {
-	long	len_numb;
+	long long	len_numb;
 	char	*str;
 	char	*newstr;
 
@@ -26,9 +27,10 @@ char	*ft_itoa(int n)
 	return (newstr);
 }
 
-static long	numblen(int numb)
+// Gets the length of the given intiger number
+long long	numblen(long numb)
 {
-	int	i;
+	long long	i;
 
 	i = 0;
 	if (numb == 0 || numb < 0)
@@ -41,10 +43,11 @@ static long	numblen(int numb)
 	return (i);
 }
 
+// Converts the given long number to a string
 static char	*getstr(long numb, char *str, long len_numb)
 {
-	long	newnum;
-	int		sign;
+	long long	newnum;
+	long		sign;
 
 	newnum = 0;
 	sign = 0;
