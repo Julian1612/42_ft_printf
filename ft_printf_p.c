@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_%p.c                                     :+:      :+:    :+:   */
+/*   ft_printf_p.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:10:15 by jschneid          #+#    #+#             */
-/*   Updated: 2022/05/31 09:21:38 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:58:17 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@
 // and prints it with the 'prints_ptr_address'
 int	output_ptr_adr(va_list arguments)
 {
-	int					length_address;
+	unsigned long long	length_address;
 	unsigned long long	ptr;
 
 	ptr = (unsigned long long) va_arg(arguments, void *);
-	length_address = get_number_length(ptr);
+	length_address = number_length_hexa(ptr);
 	write(1, "0x", 2);
 	print_ptr_address(ptr);
-	return (length_address);
+	return (length_address + 2);
 }
 
 // prints the given number as a lowercase hexadecimal number
 void	print_ptr_address(unsigned long long decimal_nbr)
 {
-	long long	new_value;
+	unsigned long long	new_value;
 
 	new_value = decimal_nbr % 16 + 48;
 	decimal_nbr /= 16;

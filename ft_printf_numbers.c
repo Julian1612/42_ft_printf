@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:09:56 by jschneid          #+#    #+#             */
-/*   Updated: 2022/05/31 10:34:13 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/05/31 13:53:58 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	output_numbers(va_list arguments)
 		print_char(string_number[index]);
 		index++;
 	}
+	free (string_number);
 	return (index);
 }
 
@@ -53,5 +54,6 @@ int	output_unsigned_int(va_list arguments)
 		print_char(string_number[index]);
 		index++;
 	}
+	free (string_number);
 	return (index);
 }

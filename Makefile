@@ -6,11 +6,11 @@
 #    By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 11:34:15 by jschneid          #+#    #+#              #
-#    Updated: 2022/05/31 11:19:06 by jschneid         ###   ########.fr        #
+#    Updated: 2022/05/31 13:48:00 by jschneid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_printf.a
+NAME = libftprintf.a
 
 FLAGS = -Wall -Wextra -Werror
 

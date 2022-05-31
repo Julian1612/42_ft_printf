@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 11:35:17 by jschneid          #+#    #+#             */
-/*   Updated: 2022/05/31 09:09:45 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/05/31 16:04:54 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	conversion_check(const char *input_str, int index, va_list arguments)
 	return (0);
 }
 
-//!!!!!!!!!!! This function could be changed with the already existing numb_len !!!!!!!!!!!!!!!!!!!!!
 // Counts the digits of the given number
 int	get_number_length(long long ptr_address)
 {

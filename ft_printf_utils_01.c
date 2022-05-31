@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 11:14:06 by jschneid          #+#    #+#             */
-/*   Updated: 2022/05/31 10:32:56 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/05/31 16:12:14 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 char	*ft_itoa(long n)
 {
 	long long	len_numb;
-	char	*str;
-	char	*newstr;
+	char		*str;
+	char		*newstr;
 
-	len_numb = numblen(n);
+	len_numb = number_length(n);
 	str = malloc((len_numb + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);
@@ -27,8 +27,8 @@ char	*ft_itoa(long n)
 	return (newstr);
 }
 
-// Gets the length of the given intiger number
-long long	numblen(long numb)
+// Gets the length of the given hexa number
+long	number_length(long numb)
 {
 	long long	i;
 
@@ -41,6 +41,21 @@ long long	numblen(long numb)
 		i++;
 	}
 	return (i);
+}
+
+int	number_length_hexa(unsigned long long number)
+{
+	unsigned long long	index;
+
+	index = 0;
+	if (number == 0 || number < 0)
+		index++;
+	while (number != 0)
+	{
+		number /= 16;
+		index++;
+	}
+	return (index);
 }
 
 // Converts the given long number to a string
