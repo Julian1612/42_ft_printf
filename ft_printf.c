@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:56:49 by jschneid          #+#    #+#             */
-/*   Updated: 2022/06/01 12:10:43 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/06/01 13:47:36 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,71 +33,3 @@ int	ft_printf(const char *input_str, ...)
 	va_end(arguments);
 	return (printed_chars);
 }
-
-/* int	main (void)
-{
-	int		*x;
-	char	*y;
-	long	*z;
-	int		a;
-	int		b;
-	int		c;
-	int		d;
-
-	printf("//////////////////// Original ////////////////////\n"); */
-/* 	printf("only string :");
-	a = printf("This is a test");
-	printf("\nCount: %i", a);
-	printf("\nc :");
-	printf("% c %  c %c %c", 'a', ' ', '1', '\n');
-	printf("\ns :");
-	printf("%s %s %s %s", "string", "s", "   \t\n  ", "3311109");
-	printf("\np :");
-	a = printf("%p %p %p", -1, 2, 3);
-	printf("\n%d", a);
-	printf("\nd :");
-	printf("%d %d %d", 2147483647, -2147483647, 0);
-	printf("\nu :");
-	printf("%u %u %u %u %u %u %u %u %u %u %u %u %u", 0, -1, -2,
-	 -3, 2147483647, -2147483647, 429496, -429496, 10, -42, 100000, -0, 2);
- */	/* printf("\nx :");
-	a = printf("LONG_MAX :%x LONG_MIN:%x ULONG_MAX:%x", LONG_MAX, LONG_MIN, ULONG_MAX);
-	printf("\nlength: %d", a);
-	printf("\nX :");
-	b = printf("LONG_MAX :%x LONG_MIN:%x ULONG_MAX:%x", LONG_MAX, LONG_MIN, ULONG_MAX);
-	printf("\nlength: %d", b); */
- //	printf("%% :");
-//	a = printf("%% %%");
-//	printf("\nlength %i", a);
-/*	printf("\nAll :");
-	printf("%c %s %p %d %u %x %X %% :", 'c', "string", x, -42, 42, 420, 420);
- *///	printf("\n/////////////////////// My ///////////////////////\n");
-/* 	ft_printf("only string :");
-	b = ft_printf("This is a test");
-	ft_printf("\nCount: %i", b);
-	ft_printf("\nc :");
-	ft_printf("%c %c %c %c", 'a', ' ', '1', '\n');
-	ft_printf("\ns :");
-	ft_printf("%s %s %s %s", "string", "s", "   \t\n  ", "3311109");
-	ft_printf("\np :");
-	b = ft_printf("%p %p %p", -1, 2, 3);
-	printf("\n%d", b);
-	ft_printf("\nd :");
-	ft_printf("%d %d %d", 2147483647, -2147483647, 0);
-	ft_printf("\nu :");
-	ft_printf("%u %u %u %u %u %u %u %u %u %u %u %u %u", 0, -1, -2, -3, 2147483647, -2147483647, 429496, -429496, 10, -42, 100000, -0, 2);
- */	/* ft_printf("\nx :");
-	c = ft_printf("LONG_MAX :%x LONG_MIN:%x ULONG_MAX:%x", LONG_MAX, LONG_MIN, ULONG_MAX);
-	ft_printf("\nlength: %d", c);
-	ft_printf("\nX :");
-	d = ft_printf("LONG_MAX :%x LONG_MIN:%x ULONG_MAX:%x", LONG_MAX, LONG_MIN, ULONG_MAX);
-	printf("\nlength: %d", d); */
- //	ft_printf("%% :");
-//	b = ft_printf("%% %%");
-//	printf("\nlength %i", b);
-/*	ft_printf("\nAll :");
-	printf("%c %s %p %d %u %x %X %%", 'c', "string", x, -42, 42, 420, 420);
- *///	printf("\n//////////////////////////////////////////////////");
-//	return (0);
-//}
-
