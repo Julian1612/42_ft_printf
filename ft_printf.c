@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:56:49 by jschneid          #+#    #+#             */
-/*   Updated: 2022/05/31 16:26:46 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/06/01 12:10:43 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_printf(const char *input_str, ...)
 	return (printed_chars);
 }
 
-int	main (void)
+/* int	main (void)
 {
 	int		*x;
 	char	*y;
@@ -44,7 +44,7 @@ int	main (void)
 	int		c;
 	int		d;
 
-	printf("//////////////////// Original ////////////////////\n");
+	printf("//////////////////// Original ////////////////////\n"); */
 /* 	printf("only string :");
 	a = printf("This is a test");
 	printf("\nCount: %i", a);
@@ -60,17 +60,18 @@ int	main (void)
 	printf("\nu :");
 	printf("%u %u %u %u %u %u %u %u %u %u %u %u %u", 0, -1, -2,
 	 -3, 2147483647, -2147483647, 429496, -429496, 10, -42, 100000, -0, 2);
- */	printf("\nx :");
-	a = printf("%x %x %x %x %x %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+ */	/* printf("\nx :");
+	a = printf("LONG_MAX :%x LONG_MIN:%x ULONG_MAX:%x", LONG_MAX, LONG_MIN, ULONG_MAX);
 	printf("\nlength: %d", a);
 	printf("\nX :");
-	b = printf("%x %x %x %x %x %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-	printf("\nlength: %d", b);
-/* 	printf("\n%% :");
-	printf("% % % % %%");
-	printf("\nAll :");
+	b = printf("LONG_MAX :%x LONG_MIN:%x ULONG_MAX:%x", LONG_MAX, LONG_MIN, ULONG_MAX);
+	printf("\nlength: %d", b); */
+ //	printf("%% :");
+//	a = printf("%% %%");
+//	printf("\nlength %i", a);
+/*	printf("\nAll :");
 	printf("%c %s %p %d %u %x %X %% :", 'c', "string", x, -42, 42, 420, 420);
- */	printf("\n/////////////////////// My ///////////////////////\n");
+ *///	printf("\n/////////////////////// My ///////////////////////\n");
 /* 	ft_printf("only string :");
 	b = ft_printf("This is a test");
 	ft_printf("\nCount: %i", b);
@@ -85,17 +86,18 @@ int	main (void)
 	ft_printf("%d %d %d", 2147483647, -2147483647, 0);
 	ft_printf("\nu :");
 	ft_printf("%u %u %u %u %u %u %u %u %u %u %u %u %u", 0, -1, -2, -3, 2147483647, -2147483647, 429496, -429496, 10, -42, 100000, -0, 2);
- */	ft_printf("\nx :");
-	c = ft_printf("%x %x %x %x %x %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-	printf("\nlength: %d", c);
+ */	/* ft_printf("\nx :");
+	c = ft_printf("LONG_MAX :%x LONG_MIN:%x ULONG_MAX:%x", LONG_MAX, LONG_MIN, ULONG_MAX);
+	ft_printf("\nlength: %d", c);
 	ft_printf("\nX :");
-	d = ft_printf("%X %X %X %X %X %X %X", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-	printf("\nlength: %d", d);
-/* 	ft_printf("\n%% :");
-	ft_printf("%% %%% %%%% %%%%% %%%%%%");
-	ft_printf("\nAll :");
+	d = ft_printf("LONG_MAX :%x LONG_MIN:%x ULONG_MAX:%x", LONG_MAX, LONG_MIN, ULONG_MAX);
+	printf("\nlength: %d", d); */
+ //	ft_printf("%% :");
+//	b = ft_printf("%% %%");
+//	printf("\nlength %i", b);
+/*	ft_printf("\nAll :");
 	printf("%c %s %p %d %u %x %X %%", 'c', "string", x, -42, 42, 420, 420);
- */	printf("\n//////////////////////////////////////////////////");
-	return (0);
-}
+ *///	printf("\n//////////////////////////////////////////////////");
+//	return (0);
+//}
 

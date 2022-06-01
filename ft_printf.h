@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 16:26:10 by aestraic          #+#    #+#             */
-/*   Updated: 2022/05/31 16:11:35 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/06/01 10:39:28 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ int			output_percent(void);
 int			output_ptr_adr(va_list arguments);
 void		print_ptr_address(unsigned long long decimal_nbr);
 int			output_lowercase_hexa(va_list argument);
-void		print_lowercase_hexa(unsigned long long decimal_nbr);
+void		print_lowercase_hexa(unsigned int decimal_nbr);
 int			output_uppercase_hexa(va_list arguments);
-void		print_uppercase_hexa(unsigned long long decimal_nbr);
+void		print_uppercase_hexa(unsigned int decimal_nbr);
 int			output_unsigned_int(va_list arguments);
 int			number_length_hexa(unsigned long long numb);
 long		number_length(long numb);
-static char	*getstr(long numb, char *str, long numb_len);
+static char	*get_string(long numb, char *str, long numb_len);
 
 #endif

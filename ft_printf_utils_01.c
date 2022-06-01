@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 11:14:06 by jschneid          #+#    #+#             */
-/*   Updated: 2022/05/31 16:12:14 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/06/01 09:47:45 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,29 +23,30 @@ char	*ft_itoa(long n)
 	str = malloc((len_numb + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);
-	newstr = getstr(n, str, len_numb);
+	newstr = get_string(n, str, len_numb);
 	return (newstr);
 }
 
-// Gets the length of the given hexa number
-long	number_length(long numb)
+// Gets the length of the given decimal number
+long	number_length(long number)
 {
-	long long	i;
+	int	index;
 
-	i = 0;
-	if (numb == 0 || numb < 0)
-		i++;
-	while (numb != 0)
+	index = 0;
+	if (number == 0 || number < 0)
+		index++;
+	while (number != 0)
 	{
-		numb /= 10;
-		i++;
+		number /= 10;
+		index++;
 	}
-	return (i);
+	return (index);
 }
 
+// Gets the length of the given hexadecimal number
 int	number_length_hexa(unsigned long long number)
 {
-	unsigned long long	index;
+	int	index;
 
 	index = 0;
 	if (number == 0 || number < 0)
@@ -59,29 +60,29 @@ int	number_length_hexa(unsigned long long number)
 }
 
 // Converts the given long number to a string
-static char	*getstr(long numb, char *str, long len_numb)
+static char	*get_string(long number, char *string, long length_number)
 {
-	long long	newnum;
+	long long	new_number;
 	long		sign;
 
-	newnum = 0;
+	new_number = 0;
 	sign = 0;
-	str[len_numb] = '\0';
-	if (numb == 0)
-		str[0] = '0';
-	if (numb < 0)
+	string[length_number] = '\0';
+	if (number == 0)
+		string[0] = '0';
+	if (number < 0)
 	{
-		numb *= -1;
+		number *= -1;
 		sign = 1;
 	}
-	while (len_numb > 0)
+	while (length_number > 0)
 	{
-		newnum = numb % 10;
-		str[len_numb -1] = 48 + newnum;
-		numb /= 10;
-		len_numb--;
+		new_number = number % 10;
+		string[length_number -1] = 48 + new_number;
+		number /= 10;
+		length_number--;
 	}
 	if (sign == 1)
-		str[0] = '-';
-	return (str);
+		string[0] = '-';
+	return (string);
 }

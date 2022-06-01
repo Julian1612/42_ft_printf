@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 11:35:17 by jschneid          #+#    #+#             */
-/*   Updated: 2022/05/31 16:04:54 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/06/01 12:20:11 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,20 @@ int	write_string(const char *input_str, va_list arguments)
 	char_counter = 0;
 	while (input_str[index] != '\0')
 	{
-		if (input_str[index] == '%')
+		if (input_str[index] == '%' && (input_str[index + 1] == '%'
+				|| input_str[index + 1] == 'c' || input_str[index + 1] == 's'
+				|| input_str[index + 1] == 'p' || input_str[index + 1] == 'i'
+				|| input_str[index + 1] == 'd' || input_str[index + 1] == 'u'
+				|| input_str[index + 1] == 'x' || input_str[index + 1] == 'X'))
 		{
 			char_counter += conversion_check(input_str, index, arguments);
 			index++;
 		}
 		else
+		{
 			print_char(input_str[index]);
-		if (input_str[index] != '%' && input_str[index - 1] != '%')
 			char_counter++;
+		}
 		index++;
 	}
 	return (char_counter);
@@ -39,9 +44,9 @@ int	write_string(const char *input_str, va_list arguments)
 
 // Checks wich character is used after the %
 // and starts the function wich is used for that case.
-// after the function is finished it returns the number of printed
+// after the called function is finished it returns the number of printed
 // characters to the 'conversion_check' function and the
-// 'conversion_check' function also return the value.
+// 'conversion_check' function  return the value.
 int	conversion_check(const char *input_str, int index, va_list arguments)
 {
 	if (input_str[index + 1] == 'c')

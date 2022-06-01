@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:10:15 by jschneid          #+#    #+#             */
-/*   Updated: 2022/05/31 15:58:17 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/06/01 10:17:58 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 // and prints it with the 'prints_ptr_address'
 int	output_ptr_adr(va_list arguments)
 {
-	unsigned long long	length_address;
+	int					length_address;
 	unsigned long long	ptr;
 
 	ptr = (unsigned long long) va_arg(arguments, void *);

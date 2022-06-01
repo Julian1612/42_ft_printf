@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:10:38 by jschneid          #+#    #+#             */
-/*   Updated: 2022/05/31 16:14:37 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/06/01 11:09:42 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@
 int	output_lowercase_hexa(va_list arguments)
 {
 	int					length_address;
-	unsigned long long	ptr;
+	unsigned int		number;
 
-	ptr = va_arg(arguments, unsigned long long);
-	length_address = number_length_hexa(ptr);
-	print_lowercase_hexa(ptr);
+	number = va_arg(arguments, unsigned int);
+	length_address = number_length_hexa(number);
+	print_lowercase_hexa(number);
 	return (length_address);
 }
 
 // Converts the given number to lowercase hexadecimal number
 // and use 'print_char' to print the digits
-void	print_lowercase_hexa(unsigned long long decimal_nbr)
+void	print_lowercase_hexa(unsigned int decimal_nbr)
 {
-	unsigned long long	new_value;
+	unsigned int	new_value;
 
 	new_value = decimal_nbr % 16 + 48;
 	decimal_nbr /= 16;
@@ -57,19 +57,19 @@ void	print_lowercase_hexa(unsigned long long decimal_nbr)
 int	output_uppercase_hexa(va_list arguments)
 {
 	int					length_address;
-	unsigned long long	ptr;
+	unsigned int		number;
 
-	ptr = va_arg(arguments, unsigned long long);
-	length_address = number_length_hexa(ptr);
-	print_uppercase_hexa(ptr);
+	number = va_arg(arguments, unsigned long long);
+	length_address = number_length_hexa(number);
+	print_uppercase_hexa(number);
 	return (length_address);
 }
 
 // Converts the given number to uppercase hexadecimal number
 // and use 'print_char' to print the digits
-void	print_uppercase_hexa(unsigned long long decimal_nbr)
+void	print_uppercase_hexa(unsigned int decimal_nbr)
 {
-	unsigned long long	new_value;
+	unsigned int	new_value;
 
 	new_value = decimal_nbr % 16 + 48;
 	decimal_nbr /= 16;
