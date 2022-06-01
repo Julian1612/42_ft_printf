@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:10:15 by jschneid          #+#    #+#             */
-/*   Updated: 2022/06/01 10:17:58 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/06/01 15:21:34 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Gets the pointer adress,
 // gets the length of the adress with 'get_number_length'
 // and prints it with the 'prints_ptr_address'
-int	output_ptr_adr(va_list arguments)
+int	output_pointer_address(va_list arguments)
 {
 	int					length_address;
 	unsigned long long	ptr;
@@ -23,19 +23,20 @@ int	output_ptr_adr(va_list arguments)
 	ptr = (unsigned long long) va_arg(arguments, void *);
 	length_address = number_length_hexa(ptr);
 	write(1, "0x", 2);
-	print_ptr_address(ptr);
+	print_pointer_address(ptr);
 	return (length_address + 2);
 }
 
-// prints the given number as a lowercase hexadecimal number
-void	print_ptr_address(unsigned long long decimal_nbr)
+// prints the given pointer address as a lowercase hexadecimal number
+// using the 'print_char' function
+void	print_pointer_address(unsigned long long decimal_nbr)
 {
 	unsigned long long	new_value;
 
 	new_value = decimal_nbr % 16 + 48;
 	decimal_nbr /= 16;
 	if (decimal_nbr > 0)
-		print_ptr_address(decimal_nbr);
+		print_pointer_address(decimal_nbr);
 	if (new_value == 58)
 		new_value = 'a';
 	else if (new_value == 59)

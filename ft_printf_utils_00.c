@@ -6,14 +6,14 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 11:35:17 by jschneid          #+#    #+#             */
-/*   Updated: 2022/06/01 13:59:33 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/06/01 14:49:11 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 // Iterrats through the given string and prints the single charcters.
-// When a '%' character occurs the function starts function 'conversion_check'
+// When there is a '%' character the function starts function 'conversion_check'
 int	write_string(const char *input_str, va_list arguments)
 {
 	int		index;
@@ -29,7 +29,7 @@ int	write_string(const char *input_str, va_list arguments)
 				|| input_str[index + 1] == 'd' || input_str[index + 1] == 'u'
 				|| input_str[index + 1] == 'x' || input_str[index + 1] == 'X'))
 		{
-			char_counter += conversion_check(input_str, index, arguments);
+			char_counter += varibale_check(input_str, index, arguments);
 			index++;
 		}
 		else
@@ -47,14 +47,14 @@ int	write_string(const char *input_str, va_list arguments)
 // after the called function is finished it returns the number of printed
 // characters to the 'conversion_check' function and the
 // 'conversion_check' function  return the value.
-int	conversion_check(const char *input_str, int index, va_list arguments)
+int	varibale_check(const char *input_str, int index, va_list arguments)
 {
 	if (input_str[index + 1] == 'c')
 		return (output_character(arguments));
 	else if (input_str[index + 1] == 's')
 		return (output_string(arguments));
 	else if (input_str[index + 1] == 'p')
-		return (output_ptr_adr(arguments));
+		return (output_pointer_address(arguments));
 	else if (input_str[index + 1] == 'd')
 		return (output_numbers(arguments));
 	else if (input_str[index + 1] == 'i')

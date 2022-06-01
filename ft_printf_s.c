@@ -6,14 +6,14 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:10:24 by jschneid          #+#    #+#             */
-/*   Updated: 2022/06/01 13:21:51 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/06/01 14:45:55 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// Gets the value from the argument and itarrets through the string and prints
-// every character with help of print_char
+// Gets the value from the argument, itarrets through the string and prints
+// every character with help of 'print_char' function
 int	output_string(va_list arguments)
 {
 	int		index;

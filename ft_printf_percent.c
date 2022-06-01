@@ -6,14 +6,14 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:08:32 by jschneid          #+#    #+#             */
-/*   Updated: 2022/06/01 11:48:32 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/06/01 14:45:22 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 // Gives the 'print_char' function a '%' prints it to the
-// standart output and returns 2
+// standart output and returns 1
 int	output_percent(void)
 {
 	print_char('%');

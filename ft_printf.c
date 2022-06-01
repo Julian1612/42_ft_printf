@@ -6,15 +6,11 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:56:49 by jschneid          #+#    #+#             */
-/*   Updated: 2022/06/01 13:47:36 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/06/01 15:21:05 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-///////////Delet after finish/////////
-#include <stdio.h>
-#include <limits.h>
-//////////////////////////////////////
 
 // The printf utility formats and prints its arguments, after the first,
 // under control of the format.  The format is a character string which
