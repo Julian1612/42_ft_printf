@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_p.c                                      :+:      :+:    :+:   */
+/*   ft_printf_pointer.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:10:15 by jschneid          #+#    #+#             */
-/*   Updated: 2022/06/01 15:21:34 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/06/02 10:29:54 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	output_pointer_address(va_list arguments)
 	unsigned long long	ptr;
 
 	ptr = (unsigned long long) va_arg(arguments, void *);
-	length_address = number_length_hexa(ptr);
+	length_address = number_length_hexadecimal(ptr);
 	write(1, "0x", 2);
 	print_pointer_address(ptr);
 	return (length_address + 2);
@@ -49,5 +49,5 @@ void	print_pointer_address(unsigned long long decimal_nbr)
 		new_value = 'e';
 	else if (new_value == 63)
 		new_value = 'f';
-	print_char(new_value);
+	print_character(new_value);
 }

@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:09:56 by jschneid          #+#    #+#             */
-/*   Updated: 2022/05/31 13:53:58 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/06/02 11:30:14 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	output_numbers(va_list arguments)
 	string_number = ft_itoa(decimal_number);
 	while (string_number[index] != '\0')
 	{
-		print_char(string_number[index]);
+		print_character(string_number[index]);
 		index++;
 	}
 	free (string_number);
@@ -36,7 +36,7 @@ int	output_numbers(va_list arguments)
 // Gets the value from the argument check if its positiv
 // converts the number to a string and prints it to the standart output
 // using 'print_char'
-int	output_unsigned_int(va_list arguments)
+int	output_unsigned_integer(va_list arguments)
 {
 	int		index;
 	long	decimal_number;
@@ -51,7 +51,7 @@ int	output_unsigned_int(va_list arguments)
 	string_number = ft_itoa(decimal_number);
 	while (string_number[index] != '\0')
 	{
-		print_char(string_number[index]);
+		print_character(string_number[index]);
 		index++;
 	}
 	free (string_number);

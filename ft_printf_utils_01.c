@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 11:14:06 by jschneid          #+#    #+#             */
-/*   Updated: 2022/06/01 09:47:45 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/06/02 10:27:25 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ long	number_length(long number)
 }
 
 // Gets the length of the given hexadecimal number
-int	number_length_hexa(unsigned long long number)
+int	number_length_hexadecimal(unsigned long long number)
 {
 	int	index;
 
@@ -60,10 +60,10 @@ int	number_length_hexa(unsigned long long number)
 }
 
 // Converts the given long number to a string
-static char	*get_string(long number, char *string, long length_number)
+char	*get_string(long number, char *string, long length_number)
 {
 	long long	new_number;
-	long		sign;
+	int			sign;
 
 	new_number = 0;
 	sign = 0;

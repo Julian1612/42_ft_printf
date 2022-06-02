@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 11:35:17 by jschneid          #+#    #+#             */
-/*   Updated: 2022/06/01 14:49:11 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/06/02 11:26:29 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ int	write_string(const char *input_str, va_list arguments)
 				|| input_str[index + 1] == 'd' || input_str[index + 1] == 'u'
 				|| input_str[index + 1] == 'x' || input_str[index + 1] == 'X'))
 		{
-			char_counter += varibale_check(input_str, index, arguments);
+			char_counter += variable_check(input_str, index, arguments);
 			index++;
 		}
 		else
 		{
-			print_char(input_str[index]);
+			print_character(input_str[index]);
 			char_counter++;
 		}
 		index++;
@@ -47,7 +47,7 @@ int	write_string(const char *input_str, va_list arguments)
 // after the called function is finished it returns the number of printed
 // characters to the 'conversion_check' function and the
 // 'conversion_check' function  return the value.
-int	varibale_check(const char *input_str, int index, va_list arguments)
+int	variable_check(const char *input_str, int index, va_list arguments)
 {
 	if (input_str[index + 1] == 'c')
 		return (output_character(arguments));
@@ -60,11 +60,11 @@ int	varibale_check(const char *input_str, int index, va_list arguments)
 	else if (input_str[index + 1] == 'i')
 		return (output_numbers(arguments));
 	else if (input_str[index + 1] == 'u')
-		return (output_unsigned_int(arguments));
+		return (output_unsigned_integer(arguments));
 	else if (input_str[index + 1] == 'x')
-		return (output_lowercase_hexa(arguments));
+		return (output_lowercase_hexadecimal(arguments));
 	else if (input_str[index + 1] == 'X')
-		return (output_uppercase_hexa(arguments));
+		return (output_uppercase_hexadecimal(arguments));
 	else if (input_str[index + 1] == '%')
 		return (output_percent());
 	return (0);
@@ -86,7 +86,7 @@ int	get_number_length(long long ptr_address)
 }
 
 // Writes the given character to the standart output
-void	print_char(const char output_char)
+void	print_character(const char output_char)
 {
 	write(1, &output_char, 1);
 }

@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 16:26:10 by jschneid          #+#    #+#             */
-/*   Updated: 2022/06/01 15:27:28 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/06/02 11:27:06 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@
 
 int			ft_printf(const char *input_str, ...);
 char		*ft_itoa(long n);
-void		print_char(const char output_char);
+void		print_character(const char output_char);
 int			write_string(const char *input_str, va_list arguments);
-int			varibale_check(const char *input_str,
+int			variable_check(const char *input_str,
 				int index, va_list arguments);
 int			output_character(va_list arguments);
 int			output_string(va_list arguments);
 int			output_numbers(va_list arguments);
-int			output_intiger(va_list arguments);
+int			output_integer(va_list arguments);//
 int			output_percent(void);
 int			output_pointer_address(va_list arguments);
 void		print_pointer_address(unsigned long long decimal_nbr);
-int			output_lowercase_hexa(va_list argument);
-void		print_lowercase_hexa(unsigned int decimal_nbr);
-int			output_uppercase_hexa(va_list arguments);
-void		print_uppercase_hexa(unsigned int decimal_nbr);
-int			output_unsigned_int(va_list arguments);
-int			number_length_hexa(unsigned long long numb);
+int			output_lowercase_hexadecimal(va_list argument);
+void		print_lowercase_hexadecimal(unsigned int decimal_nbr);
+int			output_uppercase_hexadecimal(va_list arguments);
+void		print_uppercase_hexadecimal(unsigned int decimal_nbr);
+int			output_unsigned_integer(va_list arguments);//
+int			number_length_hexadecimal(unsigned long long numb);
 long		number_length(long numb);
-static char	*get_string(long numb, char *str, long numb_len);
+char		*get_string(long numb, char *str, long numb_len);
 
 #endif

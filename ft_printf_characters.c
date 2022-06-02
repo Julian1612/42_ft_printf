@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_c.c                                      :+:      :+:    :+:   */
+/*   ft_printf_characters.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:09:46 by jschneid          #+#    #+#             */
-/*   Updated: 2022/05/31 11:54:44 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/06/02 10:25:53 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ int	output_character(va_list arguments)
 	int	character;
 
 	character = va_arg(arguments, int);
-	print_char(character);
+	print_character(character);
 	return (1);
 }

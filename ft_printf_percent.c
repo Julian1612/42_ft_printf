@@ -6,7 +6,7 @@
 /*   By: jschneid <jschneid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:08:32 by jschneid          #+#    #+#             */
-/*   Updated: 2022/06/01 14:45:22 by jschneid         ###   ########.fr       */
+/*   Updated: 2022/06/02 10:26:18 by jschneid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 // standart output and returns 1
 int	output_percent(void)
 {
-	print_char('%');
+	print_character('%');
 	return (1);
 }
